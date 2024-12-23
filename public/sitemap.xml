@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>//localhost:42631/about/</loc>
+  </url><url>
+    <loc>//localhost:42631/contact/</loc>
+  </url><url>
+    <loc>//localhost:42631/formsubmitted/</loc>
+  </url><url>
+    <loc>//localhost:42631/homepage/</loc>
+  </url><url>
+    <loc>//localhost:42631/</loc>
+  </url><url>
+    <loc>//localhost:42631/series/</loc>
+  </url><url>
+    <loc>//localhost:42631/tags/</loc>
+  </url>
+</urlset>

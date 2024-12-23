@@ -1,0 +1,70 @@
+baseurl      = "localhost"
+title        = "Manic Palm Studios"
+languageCode = "en-us"
+theme        = "hello-friend-ng"
+
+[pagination]
+  disableAliases = false
+  pagerSize = 10
+  path = 'page'
+
+[params]
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04"
+
+  # Subtitle for home
+  homeSubtitle = "we create."
+
+  # Set disableReadOtherPosts to true in order to hide the links to other posts.
+  disableReadOtherPosts = false
+
+  # Enable sharing buttons, if you like
+  enableSharingButtons = false
+
+  # Show a global language switcher in the navigation bar
+  enableGlobalLanguageMenu = false
+
+  # Metadata mostly used in document's head
+  description = "the home of manic palm studios"
+  keywords = "homepage"
+  images = [""]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+  [taxonomies]
+    category = "homepage"
+    tag      = "tags"
+    series   = "series"
+
+[languages]
+  [languages.en]
+    title = "manic palm studios"
+    keywords = ""
+    copyright = '2024 © manic palm studios'
+    readOtherPosts = "Read other posts"
+
+  [languages.en.params]
+    subtitle  = "the home of manic palm studios"
+
+    [languages.en.params.logo]
+      logoText = "manic palm studios"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Your example logo alt text"
+
+  # And you can even create generic menu
+  [[menu.main]]
+    identifier = "about"
+    name       = "about"
+    url        = "/about"
+  [[menu.main]]
+    identifier = "contact"
+    name       = "contact"
+    url        = "/contact"

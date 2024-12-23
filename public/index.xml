@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>manic palm studios</title>
+    <link>//localhost:42631/</link>
+    <description>Recent content on manic palm studios</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>2024 © manic palm studios</copyright>
+    <atom:link href="//localhost:42631/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About us</title>
+      <link>//localhost:42631/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:42631/about/</guid>
+      <description>&lt;p&gt;We are a multi-disciplinary creative studio, currently working on our own projects.&lt;/p&gt;&#xA;&lt;p&gt;If you would like to know more, please feel free to get in touch with us through the &lt;a href=&#34;//localhost:42631/contact/&#34;&gt;contact&lt;/a&gt; page.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>//localhost:42631/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:42631/contact/</guid>
+      <description>&lt;p&gt;You can contact us here!&lt;/p&gt;&#xA;&lt;form method=&#34;post&#34; action=&#34;https://forms.un-static.com/forms/65fe7b05ea9f7fceefbdbf004ddf0a75e924c22a&#34;&gt;&#xA;  &lt;div class=&#34;form-group row&#34;&gt;&#xA;    &lt;label for=&#34;name&#34; class=&#34;col-4 col-form-label&#34;&gt;Name&lt;/label&gt;&#xA;    &lt;div class=&#34;col-8&#34;&gt;&#xA;      &lt;div class=&#34;input-group&#34;&gt;&#xA;        &lt;div class=&#34;input-group-addon&#34;&gt;&#xA;          &lt;i class=&#34;fa fa-user&#34;&gt;&lt;/i&gt;&#xA;        &lt;/div&gt;&#xA;        &lt;input id=&#34;name&#34; name=&#34;name&#34; placeholder=&#34;Please enter your name&#34; type=&#34;text&#34; required=&#34;required&#34; class=&#34;form-control&#34;&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;form-group row&#34;&gt;&#xA;    &lt;label for=&#34;email&#34; class=&#34;col-4 col-form-label&#34;&gt;E-mail address&lt;/label&gt;&#xA;    &lt;div class=&#34;col-8&#34;&gt;&#xA;      &lt;div class=&#34;input-group&#34;&gt;&#xA;        &lt;div class=&#34;input-group-addon&#34;&gt;&#xA;          &lt;i class=&#34;fa fa-envelope&#34;&gt;&lt;/i&gt;&#xA;        &lt;/div&gt;&#xA;        &lt;input id=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;Your e-mail address&#34; type=&#34;text&#34; required=&#34;required&#34; class=&#34;form-control&#34;&gt;&#xA;      &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;form-group row&#34;&gt;&#xA;    &lt;label for=&#34;message&#34; class=&#34;col-4 col-form-label&#34;&gt;Message&lt;/label&gt;&#xA;    &lt;div class=&#34;col-8&#34;&gt;&#xA;      &lt;textarea id=&#34;message&#34; name=&#34;message&#34; cols=&#34;40&#34; rows=&#34;10&#34; required=&#34;required&#34; class=&#34;form-control&#34;&gt;&lt;/textarea&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;form-group row&#34;&gt;&#xA;    &lt;div class=&#34;offset-4 col-8&#34;&gt;&#xA;      &lt;button name=&#34;submit&#34; type=&#34;submit&#34; class=&#34;btn btn-primary&#34;&gt;Send&lt;/button&gt;&#xA;    &lt;/div&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div class=&#34;text-center&#34;&gt;&#xA;    &lt;p&gt;&lt;small&gt;(Powered by &lt;a rel=&#34;nofollow&#34; href=&#34;Un-static Forms&#34;&gt;Un-static Forms&lt;/a&gt;)&lt;/small&gt;&lt;/p&gt;&#xA;  &lt;/div&gt;&#xA;&lt;/form&gt;</description>
+    </item>
+    <item>
+      <title>Form Successfully Submitted!</title>
+      <link>//localhost:42631/formsubmitted/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:42631/formsubmitted/</guid>
+      <description>&lt;p&gt;Thanks, we will be in touch soon.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
