@@ -1,4 +1,4 @@
-baseurl      = "localhost"
+baseurl      = "https://www.manicpalm.com"
 title        = "Manic Palm Studios"
 languageCode = "en-us"
 theme        = "hello-friend-ng"
