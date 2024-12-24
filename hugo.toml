@@ -94,63 +94,63 @@ disableHugoGeneratorInject = false
   # plausibleDataDomain = 'test.com'
   # plausibleScriptSource = 'https://plausible.io/js/script.js'
 
-  [params.author]
-    name = "abnormaln8"
+[params.author]
+  name = "abnormaln8"
 
   # Custom footer
   # If you want, you can easily override the default footer with your own content.
   #
-  [params.footer]
-    trademark = 2024
-    rss = true
-    copyright = true
-    author = true
+[params.footer]
+  trademark = 2024
+  rss = true
+  copyright = true
+  author = false
 
-    topText = []
-    bottomText = [
-      "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> ",
-      "Made with help from &#x1F436;"
-    ]
+  topText = []
+  bottomText = [
+    "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> ",
+    "Made with help from &#x1F436;"
+  ]
 
   # Colors for favicons
   #
-  [params.favicon.color]
-    mask = "#1b1c1d"
-    msapplication = "#1b1c1d"
-    theme = "#1b1c1d"
+[params.favicon.color]
+  mask = "#1b1c1d"
+  msapplication = "#1b1c1d"
+  theme = "#1b1c1d"
 
-  [params.logo]
-    logoMark     = ">"
-    logoText     = "$ cd /home/"
-    logoHomeLink = "/"
-    # Set true to remove the logo cursor entirely.
-    logoCursorDisabled = false
-    # Set to a valid CSS color to change the cursor in the logo.
-    logoCursorColor    = "#228B22"
-    # Set to a valid CSS time value to change the animation duration, "0s" to disable.
-    logoCursorAnimate  = "1.5s"
-    # Append the current url pathname to logoText
-    # logoCursorPathname = true
+[params.logo]
+  logoMark     = ">"
+  logoText     = "$ cd /home/"
+  logoHomeLink = "/"
+  # Set true to remove the logo cursor entirely.
+  logoCursorDisabled = false
+  # Set to a valid CSS color to change the cursor in the logo.
+  logoCursorColor    = "#228B22"
+  # Set to a valid CSS time value to change the animation duration, "0s" to disable.
+  logoCursorAnimate  = "1.5s"
+  # Append the current url pathname to logoText
+  # logoCursorPathname = true
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   # Addon: Startpage portrait
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
   # Uncomment this if you want a portrait on your start page
   #
-  # [params.portrait]
-  #   path     = "/img/image.jpg"
-  #   alt      = "Portrait"
-  #   maxWidth = "50px"
+[params.portrait]
+  path     = "/assets/images/portrait.png"
+  alt      = "Portrait"
+  maxWidth = "50px"
 
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
-  [taxonomies]
-    category = "homepage"
-    tag      = "tags"
-    series   = "series"
+[taxonomies]
+  category = "homepage"
+  tag      = "tags"
+  series   = "series"
 
 [languages]
   [languages.en]
@@ -171,11 +171,11 @@ disableHugoGeneratorInject = false
     # alt = "Your example logo alt text"
 
   # And you can even create generic menu
-  [[menu.main]]
-    identifier = "about"
-    name       = "about"
-    url        = "/about"
-  [[menu.main]]
-    identifier = "contact"
-    name       = "contact"
-    url        = "/contact"
+[[menu.main]]
+  identifier = "about"
+  name       = "about"
+  url        = "/about"
+[[menu.main]]
+  identifier = "contact"
+  name       = "contact"
+  url        = "/contact"
