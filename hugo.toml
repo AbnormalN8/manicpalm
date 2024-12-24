@@ -18,7 +18,7 @@ theme        = "hello-friend-ng"
   homeSubtitle = "we create."
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
-  disableReadOtherPosts = false
+  disableReadOtherPosts = true
 
   # Enable sharing buttons, if you like
   enableSharingButtons = false
@@ -43,7 +43,7 @@ theme        = "hello-friend-ng"
 
 [languages]
   [languages.en]
-    title = "manic palm studios"
+    title = "welcome"
     keywords = ""
     copyright = '2024 © manic palm studios'
     readOtherPosts = "Read other posts"
