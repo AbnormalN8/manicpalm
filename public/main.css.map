@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/home/nc/Documents/Manic Palm Studios/Website/Website 2025/manicpalm",
+	"sourceRoot": "/home/nc/Documents/Manic Palm Studios/Website/2025/manicpalm",
 	"sources": [
 		"themes/hello-friend-ng/assets/scss/main.scss",
 		"themes/hello-friend-ng/assets/scss/_normalize.scss",
