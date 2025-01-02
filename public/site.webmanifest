@@ -1,6 +1,6 @@
 {
-  "name": "manicpalm.com",
-  "short_name": "mp",
+  "name": "manicpalm",
+  "short_name": "manic",
   "icons": [
     {
       "src": "/static/web-app-manifest-192x192.png",
