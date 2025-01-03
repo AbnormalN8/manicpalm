@@ -108,7 +108,7 @@ disableHugoGeneratorInject = false
 
   topText = []
   bottomText = [
-    "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> • <link rel=me href=\"https://mastodon.social/@Prompter2415\"" ,
+    "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> • <a rel=me href=\"https://mastodon.social/@Prompter2415\">Mastadon</a>" ,
     "Made with help from &#x1F436;"
   ]
 
