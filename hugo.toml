@@ -162,13 +162,13 @@ disableHugoGeneratorInject = false
 
 [languages]
   [languages.en]
-    title = "Welcome to"
+    title = "Welcome"
     keywords = ""
     copyright = 'manic palm studios'
     readOtherPosts = "Read other posts"
 
   [languages.en.params]
-    subtitle  = "the home of manic palm studios"
+    subtitle  = "to the home of manic palm studios"
 
     [languages.en.params.logo]
       logoText = "manic palm studios"
