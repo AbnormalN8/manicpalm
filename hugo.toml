@@ -40,7 +40,7 @@ disableHugoGeneratorInject = false
   dateformNumTime = "2006-01-02 15:04"
 
   # Metadata mostly used in document's head
-  description = "the home of manic palm studios"
+  description = "manic palm studios"
   keywords = "homepage, home, creative, studio"
   images = [""]
 
@@ -108,7 +108,7 @@ disableHugoGeneratorInject = false
 
   topText = []
   bottomText = [
-    "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> ",
+    "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> • <link rel=me href=\"https://mastodon.social/@Prompter2415\"" ,
     "Made with help from &#x1F436;"
   ]
 
@@ -162,7 +162,7 @@ disableHugoGeneratorInject = false
 
 [languages]
   [languages.en]
-    title = "welcome"
+    title = "Welcome to"
     keywords = ""
     copyright = 'manic palm studios'
     readOtherPosts = "Read other posts"
