@@ -43,6 +43,8 @@ disableHugoGeneratorInject = false
   description = "manic palm studios"
   keywords = "homepage, home, creative, studio"
   images = [""]
+  url    = "https://mastodon.social/@Prompter2415"
+  rel    = "me"
 
   # Subtitle for home
   homeSubtitle = "we create."
@@ -108,7 +110,7 @@ disableHugoGeneratorInject = false
 
   topText = []
   bottomText = [
-    "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> • <link href=\"https://mastodon.social/@Prompter2415\" rel=\"me\">" ,
+    "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> • <a href=\"https://mastodon.social/@Prompter2415\" rel=\"me\">Mastodon</a>" ,
     "Made with help from &#x1F436;"
   ]
 
@@ -148,7 +150,7 @@ disableHugoGeneratorInject = false
 
 [[params.social]]
   name = "mastodon"
-  url  = "<link href=\"https://mastodon.social/@Prompter2415\" rel=\"me\">"
+  url  = "https://mastodon.social/@Prompter2415"
   rel  = "me"
 
 [markup]
