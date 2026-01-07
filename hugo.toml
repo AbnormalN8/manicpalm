@@ -111,7 +111,7 @@ disableHugoGeneratorInject = false
   topText = []
   bottomText = [
     "Powered by <a href=\"http://gohugo.io\">Hugo</a> and <a href=\"https://pages.cloudflare.com\">Pages</a> • <a href=\"https://mastodon.social/@Prompter2415\" rel=\"me\">Mastodon</a>" ,
-    "Made with help from &#x1F436;"
+    "R.I.P. &#x1F436 (2010-2025)"
   ]
 
   # Colors for favicons
