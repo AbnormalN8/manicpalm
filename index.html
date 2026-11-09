@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="manic palm studios - we create">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>manic palm studios</title>
+
+  <!-- Set theme before paint to avoid a flash of the wrong colours -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        document.documentElement.setAttribute('data-theme', stored || (prefersLight ? 'light' : 'dark'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <style>
+    /* ==========================================
+       THEME CONFIGURATION
+       Dark is the default. Edit both blocks to
+       tune each palette.
+       ========================================== */
+    :root,
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+
+      --primary-color: #066911;              /* Main brand color */
+      --accent-color: #ff6b35;               /* Accent color */
+      --bg-color: #0a0a0a;                   /* Background */
+      --text-color: #f5f5f5;                 /* Text */
+      --muted-text: #999999;                 /* Muted text */
+      --surface: rgba(255, 255, 255, 0.05);  /* Cards / panels */
+      --surface-hover: rgba(255, 255, 255, 0.09);
+      --border: rgba(255, 255, 255, 0.12);   /* Hairlines */
+      --nav-bg: rgba(10, 10, 10, 0.92);      /* Nav fade */
+
+      --logo-disc: #131317;                  /* Inside of the round logo */
+      --about-disc: #066911;                 /* Solid fill of the about circle */
+
+      --section-padding: 80px 20px;
+      --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+      /* ---- Circle sizes ---- */
+      --logo-size: 140px;                    /* Hero logo diameter */
+      --about-image-size: 340px;             /* About circle diameter (larger) */
+      --about-buffer-size: calc(var(--about-image-size) + 6px); /* Buffer extends 3px beyond */
+      --logo-margin-bottom: 36px;
+    }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+
+      --primary-color: #066911;
+      --accent-color: #d94f1c;
+      --bg-color: #fafafa;
+      --text-color: #14141a;
+      --muted-text: #5f5f6b;
+      --surface: rgba(0, 0, 0, 0.035);
+      --surface-hover: rgba(0, 0, 0, 0.065);
+      --border: rgba(0, 0, 0, 0.12);
+      --nav-bg: rgba(250, 250, 250, 0.92);
+
+      --logo-disc: #ffffff;
+      --about-disc: #fafafa;                 /* Fully opaque — no pale edge */
+    }
+
+    /* ==========================================
+       RESET & BASE STYLES
+       ========================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--primary-color);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ==========================================
+       NAVIGATION
+       ========================================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      background: linear-gradient(to bottom, var(--nav-bg), transparent);
+      transition: background 0.3s ease;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: lowercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links li {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      text-transform: lowercase;
+      letter-spacing: 1px;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ==========================================
+       THEME TOGGLE
+       First item in .nav-links, before "about"
+       ========================================== */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--text-color);
+      cursor: pointer;
+      transition: background 0.25s ease, border-color 0.25s ease,
+                  color 0.25s ease, transform 0.25s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--surface-hover);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      transform: rotate(15deg);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 3px;
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    /* Dark mode shows the sun (switch to light),
+       light mode shows the moon (switch to dark) */
+    .theme-toggle .icon-moon { display: none; }
+    :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    :root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+    /* ==========================================
+       HERO SECTION
+       ========================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--section-padding);
+      position: relative;
+      text-align: center;
+    }
+
+    /* ------------------------------------------
+       ROUND LOGO
+       ------------------------------------------ */
+    .hero-logo {
+      width: var(--logo-size);
+      height: var(--logo-size);
+      margin-bottom: var(--logo-margin-bottom);
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      background: var(--logo-disc);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-logo:hover {
+      transform: scale(1.04);
+    }
+
+    /* Raster logo fills the
+       circle edge to edge without distortion */
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .hero-logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Classes used inside the inline SVG so the
+       emblem responds to the active theme */
+    .emblem-disc { fill: var(--logo-disc); }
+    .emblem-text { fill: var(--text-color); }
+
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 300;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: var(--muted-text);
+      text-align: center;
+      max-width: 600px;
+      letter-spacing: 2px;
+      text-transform: lowercase;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      animation: bounce 2s infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    /* ==========================================
+       SECTIONS
+       ========================================== */
+    section {
+      padding: var(--section-padding);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 300;
+      margin-bottom: 60px;
+      letter-spacing: -1px;
+      text-transform: lowercase;
+    }
+
+    /* ==========================================
+       ABOUT SECTION
+       ========================================== */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      color: var(--muted-text);
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    /* ------------------------------------------
+       ABOUT IMAGE WRAPPER
+       Holds the buffer pseudo-element behind
+       the visible circle. Position:relative so
+       the ::before can be positioned relative
+       to it.
+       ------------------------------------------ */
+    .about-image-wrapper {
+      position: relative;
+      width: var(--about-image-size);
+      height: var(--about-image-size);
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ------------------------------------------
+       THE BUFFER (pseudo-element)
+       ------------------------------------------ */
+    .about-image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -3px;                                 /* Extend 3px beyond the circle */
+      background: var(--bg-color);                 /* Exactly the page background */
+      border-radius: 50%;
+      z-index: -1;                                 /* Sit behind the visible circle */
+    }
+
+    /* ------------------------------------------
+       THE VISIBLE CIRCLE
+       ------------------------------------------ */
+    .about-image {
+      width: 100%;
+      height: 100%;
+      background: var(--about-disc);
+      color: #ffffff;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      position: relative;
+      z-index: 0;                                  /* Sit above the buffer */
+    }
+
+    /* Drop in a photo and it crops to the circle */
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* ==========================================
+       WHAT WE DO SECTION
+       ========================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: 0;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      background: var(--surface-hover);
+    }
+
+    .project-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+
+    .project-card p {
+      color: var(--muted-text);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .project-link {
+      color: var(--primary-color);
+      font-size: 0.85rem;
+      text-transform: lowercase;
+    }
+
+    /* ==========================================
+       SERVICES SECTION - FOR THE FUTURE
+       ========================================== */
+/*   .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .service-item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+
+    .service-item p {
+      color: var(--muted-text);
+      line-height: 1.7;
+    } */
+
+    /* ==========================================
+       CONTACT SECTION
+       ========================================== */
+    .contact {
+      text-align: center;
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact p {
+      font-size: 1.2rem;
+      color: var(--muted-text);
+      margin-bottom: 40px;
+    }
+
+    .contact-email {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--primary-color);
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    /* ==========================================
+       SOCIAL LINKS WITH ICONS
+       ========================================== */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;                                   /* Tighter gap for compact feel */
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: var(--text-color);
+      transition: all 0.25s ease;
+      overflow: hidden;                            /* Clip any overflow from hover effect */
+    }
+
+    .social-link:hover {
+      background: var(--surface-hover);
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    .social-link:focus-visible {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 3px;
+    }
+
+    .social-link svg {
+      width: 30px;
+      height: 30px;
+      display: block;
+    }
+
+    /* Hide the text label but keep it for accessibility/screen readers */
+    .social-link span {
+      position: absolute;
+      left: -9999px;
+    }
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    footer p {
+      color: var(--muted-text);
+      font-size: 0.85rem;
+    }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 900px) {
+      :root {
+        --about-image-size: 280px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        padding: 20px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-color);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      /* Hide the about image when layout stacks —
+         prevents it from appearing below the text */
+      .about-image-wrapper {
+        display: none;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      :root {
+        --logo-size: 110px;
+        --about-image-size: 230px;
+      }
+
+      .social-links {
+        gap: 10px;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+      }
+
+      .social-link svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .scroll-indicator { animation: none; }
+      .theme-toggle:hover { transform: none; }
+      .hero-logo:hover { transform: none; }
+      .social-link:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ==========================================
+       NAVIGATION
+       ========================================== -->
+  <nav>
+    <a href="#" class="logo">manic palm studios</a>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+
+      <li>
+        <button class="theme-toggle" id="themeToggle" type="button"
+                aria-label="Switch to light mode" title="Switch colour theme">
+          <!-- Sun: shown in dark mode -->
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+          </svg>
+          <!-- Moon: shown in light mode -->
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </li>
+
+      <li><a href="#about">about us</a></li>
+      <li><a href="#work">what we do</a></li>
+      <!--<li><a href="#services">services</a></li>-->
+      <li><a href="#contact">contact us</a></li>
+    </ul>
+  </nav>
+
+  <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+  <div class="hero">
+
+    <!-- ========================================
+         LOGO
+         ======================================== -->
+    <div class="hero-logo">
+      <img src="img/logo.png" alt="manic palm studios">
+    </div>
+
+    <h1>welcome</h1>
+    <p>we create.</p>
+    <div class="scroll-indicator">↓</div>
+  </div>
+
+  <!-- ==========================================
+       ABOUT SECTION
+       ========================================== -->
+  <section id="about" class="about">
+    <div class="about-content">
+      <h2 class="section-title">about</h2>
+      <p>We are manic palm studios — a creative collective focused on building meaningful experiences. Our approach combines thoughtful design with technical excellence.</p>
+      <p>From concept to execution, we work on projects that are meaningful to us and can be passed on to others to enjoy.</p>
+      <p>Every project is chosen to push our boundaries and create something that lasts.</p>
+    </div>
+
+    <!-- ========================================
+         ABOUT CIRCLE LOGO
+         ======================================== -->
+    <div class="about-image-wrapper">
+      <div class="about-image"><img src="img/logo.png" alt="manic palm studios"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       WHAT WE DO SECTION
+       ========================================== -->
+  <section id="work">
+    <h2 class="section-title">what we do</h2>
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <h3>design and animation</h3>
+        <p>Experienced in creating digital and practical creations using Open Source tools. Whether this be 3D modelled, stop-motion animation or 2D/3D digital or physical art.</p>
+      </article>
+
+      <article class="project-card">
+        <h3>development</h3>
+        <p>Our in-house architectural tools provide the foundations required in our pursuit to create art. Open Source is a passion, and we use and support this throughout our studio.</p>
+      </article>
+
+      <article class="project-card">
+        <h3>property development</h3>
+        <p>We enjoy bringing aged and derilict properties back to life using low impact modern materials. This often requires the creation of new objects designed specifically for a space.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SERVICES SECTION - FOR THE FUTURE
+       ========================================== -->
+ <!-- <section id="services">
+    <h2 class="section-title">what we do</h2>
+    <div class="services-list">
+
+      <div class="service-item">
+        <h3>design and animation</h3>
+        <p>Experienced in creating digital and practical creations using Open Source tools. Whether this be 3D modelled, stop-motion animation or 2D/3D digital or physical art. </p>
+      </div>
+
+      <div class="service-item">
+        <h3>development</h3>
+        <p>Our in-house architectural tools provide the foundations required in our pursuit to create art. Open Source is a passion, and we use and support this throughout our studio.</p>
+      </div>
+
+      <div class="service-item">
+        <h3>property development</h3>
+        <p>We enjoy bringing aged and derilict properties back to life using low impact modern materials. This often requires the creation of new objects designed specifically for a space.</p>
+      </div>
+
+    </div>
+  </section> -->
+
+  <!-- ==========================================
+       CONTACT SECTION
+       ========================================== -->
+  <section id="contact" class="contact">
+    <div class="contact-content">
+      <h2 class="section-title">get in touch</h2>
+          <p>We are not currently accepting any external submissions as we are focused on completing our internal projects.
+        </br>If you would like to know more, please feel free to get in touch with us on Mastodon.
+      </br>Our community is invite-only, so request a follow and once we review the request, we will welcome you to our close-knit group.</p>
+
+      <!-- ========================================
+           SOCIAL ICONS
+           ======================================== -->
+      <div class="social-links">
+
+        <!-- Mastodon -->
+        <a href="https://mastodon.social/@Prompter2415/" target="_blank" rel="noopener noreferrer"
+           class="social-link" aria-label="Mastodon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+          </svg>
+          <span>Mastodon</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2008-2026 manic palm studios. all rights reserved | R.I.P. &#x1F436 (2010-2025)</p>
+  </footer>
+
+  <script>
+    /* ---------- Theme switching ---------- */
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function setTheme(theme, persist) {
+      root.setAttribute('data-theme', theme);
+
+      if (persist) {
+        try { localStorage.setItem('theme', theme); } catch (e) {}
+      }
+
+      if (themeToggle) {
+        themeToggle.setAttribute(
+          'aria-label',
+          theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+        );
+      }
+
+      if (themeMeta) {
+        themeMeta.setAttribute('content', theme === 'dark' ? '#0a0a0a' : '#fafafa');
+      }
+    }
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        setTheme(next, true);
+      });
+    }
+
+    setTheme(root.getAttribute('data-theme') || 'dark', false);
+
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      let stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (err) {}
+      if (!stored) setTheme(e.matches ? 'light' : 'dark', false);
+    });
+
+    /* ---------- Mobile menu ---------- */
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileBtn?.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    /* ---------- Smooth scroll ---------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
